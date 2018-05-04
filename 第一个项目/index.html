@@ -42,8 +42,12 @@
        } */
       var i = 0;
       var selected = $(".selects").children().eq(i);
-      selected.text($(this).text());
-      $(this).text(" ");
+      if (selected.text() == ""){
+          selected.text($(this).text());
+          $(this).text(" ");
+      }
+      
+
 
 
 
