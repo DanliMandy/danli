@@ -13,11 +13,11 @@
 </head>
 <body>
 <div id="image"><img src="images/image1.png"></div>
-<div class="select">
-    <div id="s0"></div>
-    <div id="s1"></div>
-    <div id="s2"></div>
-    <div id="s3"></div>
+<div class="selects">
+    <div id="s0" class="select"></div>
+    <div id="s1" class="select"></div>
+    <div id="s2" class="select"></div>
+    <div id="s3" class="select"></div>
 </div>
 <div class="words">
     <div id="w0" class="word">小</div>
@@ -32,13 +32,21 @@
 </div>
 <script>
   $(".word").click(function () {
-      for(var i = 0;i < $(".select").length; i++){
-          var selected = $().html();
+     /* for (var i = 0;i < $(".select").length; i++ ){
+          var selected = $(".selects").children().eq(i);
           if(selected == ""){
-              $("#s + i").html($(this).html());
-              $(this).html(" ");
+              selected.text($(this).text());
+              $(this).text(" ");
           }
-      }
+
+       } */
+      var i = 0;
+      var selected = $(".selects").children().eq(i);
+      selected.text($(this).text());
+      $(this).text(" ");
+
+
+
   });
 </script>
 </body>

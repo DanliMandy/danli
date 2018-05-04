@@ -8,7 +8,7 @@
     margin-bottom: 30px;
 }
 /*选择框样式*/
-.select{
+.selects{
     width: 250px;
     height: 40px;
     line-height: 40px;
@@ -16,38 +16,11 @@
     margin: auto;
     margin-bottom: 30px;
 }
-#s0{
+.select{
     width: 40px;
     height: 40px;
     line-height: 40px;
-    margin-right: 26px;
-    float: left;
-    border: 1px solid;
-    border-radius:7px;
-    background: white;
-}
-#s1{
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    margin-right: 26px;
-    float: left;
-    border: 1px solid;
-    border-radius:7px;
-    background: white;
-}
-#s2{
-    width: 40px;
-    height: 40px;
-    margin-right: 26px;
-    float: left;
-    border: 1px solid;
-    border-radius:7px;
-    background: white;
-}
-#s3{
-    width: 40px;
-    height: 40px;
+    margin: 10px;
     float: left;
     border: 1px solid;
     border-radius:7px;
@@ -72,30 +45,4 @@
     border-radius:7px;
     background: white;
 }
-/*
-#w0{
-    width: 50px;
-    height: 40px;
-    margin-right: 46px;
-    float: left;
-    border: 1px solid;
-    border-radius:7px;
-    background: white;
-}
-#w1{
-    width: 50px;
-    height: 40px;
-    margin-right: 46px;
-    float: left;
-    border: 1px solid;
-    border-radius:7px;
-    background: white;
-}
-#w2{
-    width: 50px;
-    height: 40px;
-    float: left;
-    border: 1px solid;
-    border-radius:7px;
-    background: white;
-}*/
+
