@@ -8,7 +8,7 @@
     margin-bottom: 30px;
 }
 /*选择框样式*/
-.selects{
+.cells{
     width: 250px;
     height: 40px;
     line-height: 40px;
@@ -16,7 +16,7 @@
     margin: auto;
     margin-bottom: 30px;
 }
-.select{
+.cell{
     width: 40px;
     height: 40px;
     line-height: 40px;

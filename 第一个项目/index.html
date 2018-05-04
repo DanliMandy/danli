@@ -13,11 +13,11 @@
 </head>
 <body>
 <div id="image"><img src="images/image1.png"></div>
-<div class="selects">
-    <div id="s0" class="select"></div>
-    <div id="s1" class="select"></div>
-    <div id="s2" class="select"></div>
-    <div id="s3" class="select"></div>
+<div class="cells">
+    <div id="s0" class="cell"></div>
+    <div id="s1" class="cell"></div>
+    <div id="s2" class="cell"></div>
+    <div id="s3" class="cell"></div>
 </div>
 <div class="words">
     <div id="w0" class="word">小</div>
@@ -32,21 +32,26 @@
 </div>
 <script>
   $(".word").click(function () {
-     /* for (var i = 0;i < $(".select").length; i++ ){
-          var selected = $(".selects").children().eq(i);
-          if(selected == ""){
-              selected.text($(this).text());
-              $(this).text(" ");
-          }
+      /*var i = 0;
+      var frame = $(".selects").children().eq(i);
 
-       } */
-      var i = 0;
-      var selected = $(".selects").children().eq(i);
-      if (selected.text() == ""){
-          selected.text($(this).text());
+      if (frame.text() == ""){
+          frame.text($(this).text());
           $(this).text(" ");
       }
-      
+      else{
+          frame = $(".selects").children().eq(i+1);
+          frame.text($(this).text());
+          $(this).text(" ");
+      }*/
+    for (var i = 3; i < $(".cell").length; i--) {
+        var frame = $(".cells").children().eq(i);
+        if (frame.text() == ""){
+            frame.text($(this).text());
+            $(this).text(" ");
+        }
+
+    }
 
 
 
