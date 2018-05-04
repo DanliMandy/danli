@@ -44,7 +44,7 @@
           frame.text($(this).text());
           $(this).text(" ");
       }*/
-    for (var i = 3; i < $(".cell").length; i--) {
+    for (var i = 0; i < $(".cell").length; i++) {
         var frame = $(".cells").children().eq(i);
         if (frame.text() == ""){
             frame.text($(this).text());
