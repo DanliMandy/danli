@@ -10,14 +10,12 @@ $(".word").click(function () {
                 frame.text($(this).text());
                 break;
             }
-
         }
         $(this).text("");
         frame.attr("wordId",$(this).attr("id"));
-        /*if ($(".cell").text().length == $(".cells").children().length){
-            alert("haha")
-        }*/
+
     }
+
 });
 //框框点击事件
 $(".cell").click(function () {
