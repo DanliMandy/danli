@@ -13,9 +13,17 @@ $(".word").click(function () {
         }
         $(this).text("");
         frame.attr("wordId",$(this).attr("id"));
-
     }
+    while ($(".cell").text().length == $(".cells").children().length) {
+        if ($(".cell").text() == "小水皮大") {
+            alert("right")
 
+        }
+        else {
+            alert("wrong")
+        }
+        return
+    }
 });
 //框框点击事件
 $(".cell").click(function () {
