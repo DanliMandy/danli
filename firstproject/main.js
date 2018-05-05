@@ -1,7 +1,8 @@
 //下面的字点击事件
 $(".word").click(function () {
-    if ($(".cell").text().length == $(".cells").children().length)
+    if ($(".cell").text().length == $(".cells").children().length){
         return
+    }
     else {
         for (var i = 0; i < $(".cell").length; i++) {
             var frame = $(".cells").children().eq(i);
@@ -9,9 +10,13 @@ $(".word").click(function () {
                 frame.text($(this).text());
                 break;
             }
+
         }
         $(this).text("");
         frame.attr("wordId",$(this).attr("id"));
+        /*if ($(".cell").text().length == $(".cells").children().length){
+            alert("haha")
+        }*/
     }
 });
 //框框点击事件
