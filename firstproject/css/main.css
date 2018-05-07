@@ -4,15 +4,13 @@
 #nav{
     height: 100px;
 }
-#nav ul{
-
-}
-.layui-nav{
-    background: white;
-}
-#top button{
+.LoginandGegister{
     position: relative;
-    left: 42%;
+    right: 5%;
+    float: right;
+    text-align: center;
+    color: #fff9ec;
+    line-height: 60px;
 }
 /*问题样式*/
 #question{
