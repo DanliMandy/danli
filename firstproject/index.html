@@ -71,7 +71,7 @@
 </body>
 <script src="layui.js"></script>
 <script src="layer.js"></script>
-<!--<script>
+<script>
     layui.use('element', function(){
         var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
 
@@ -81,40 +81,6 @@
             layer.msg(elem.text());
         });
     });
-
-    $(function () {
-        $('#login').on('click', function(){
-            layer.open({
-                type: 2,
-                title: '用户登录',
-                maxmin: true,
-                skin: 'layui-layer-lan',
-                shadeClose: true, //点击遮罩关闭层
-                area : ['400px' , '280px'],
-                content:'login.html'//弹框显示的url
-            });
-            $('#loginBtn').click(function () {
-            var username = $.trim($("#username").val());//获取用户名
-            var password = $.trim($("#password").val());
-            var validateCode = $.trim($("#validateCode").val());
-
-            var url = '登录请求的url路径';
-            var param = {"username": username, "password": password, "validateCode": validateCode};
-
-            $.post(url, param, function(data) {
-                if (data == "0") {
-                    //调用父窗口的function addPersonalCenter(){}方法，在父窗口右上角增加一个个人中心按钮
-                    window.parent.addPersonalCenter();
-                    // 先获取窗口索引，才能关闭窗口
-                    var index = parent.layer.getFrameIndex(window.name);
-                    parent.layer.close(index);
-                } else {
-                    alert("登录失败！");
-                }
-            });
-        });
-    })
-    });
-</script>-->
+</script>
 <script src="main.js"></script>
 </html>
