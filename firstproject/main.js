@@ -6,7 +6,7 @@ function upsetArr(arr){
     return arr.sort(function(){ return Math.random() - 0.5});
 }
 var newWords = upsetArr(words.split("")).join("");
-//原理很简单，就是把字符串转成数组，打乱后，再转成字符串
+//把字符串转成数组打乱后再转成字符串
 $("#question").text(question);
 //填入words
 for (var i = 0;i< newWords.length; i++){
