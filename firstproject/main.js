@@ -69,3 +69,17 @@ $(".cell").click(function () {
         }
     }
 });
+
+var user = "admin"
+var psd = "123"
+$("#login").click(function () {
+    var index2 =layer.open({
+        type: 2,  //弹出框类型，分为0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+        title:'登录', //标题。默认显示为‘信息’
+        skin: 'demo-class',  //为弹出框添加自定义类名，以便对弹出框进行样式修改  如果要全部弹出框添加相同类名的话，layer.config({skin: 'demo-class'})
+        area: ['400px', '360px'], //弹出框大小
+        shadeClose: true, //点击遮罩关闭
+        content: 'login.html'
+    });
+
+})
