@@ -47,11 +47,10 @@
         var psd = $("#psd").val();
         if (user == username && psd == password){
             alert("登录成功")
+            window.parent.location.reload();
         }
-        else {
-            alert("密码错误")
 
-        }
+
     })
 </script>
 <script src="layui.js"></script>
