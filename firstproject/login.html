@@ -45,9 +45,17 @@
     $("#loginbtn").click(function () {
         var user = $("#user").val();
         var psd = $("#psd").val();
-        if (user == username && psd == password){
-            alert("登录成功")
-            window.parent.location.reload();
+        if (user == "" || psd == "") {
+            layer.msg("用户名或密码为空！")
+        }
+        else {
+            if (user == username && psd == password){
+                layer.msg("登录成功")
+                window.parent.location.reload();
+            }
+            else {
+                layer.msg("用户名或密码错误！");
+            }
         }
 
 
