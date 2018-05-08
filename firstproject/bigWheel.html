@@ -9,13 +9,50 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/layui.css" media="all">
     <link rel="stylesheet" href="css/layer.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/sweet-alert.css">
     <style>
-        body{
-            background-color: #EEE;
-        }
+        *{ margin: 0; padding: 0 ;font-family: Arial, Helvetica, sans-serif; font-family: "微软雅黑";font-weight: normal;}
+        ul,li{ list-style: none;}
+        body{ background: #dedede;}
+        /*转盘*/
+        .wheel{margin: 100px auto; position: relative; padding: 20px; width: 400px; height: 400px; background: #d40; border-radius: 50%; box-shadow: inset 0 2px 0 2px rgba(255,255,255,.3), inset 0 -2px 0 2px rgba(0,0,0,.2), 1px 2px 2px rgba(0,0,0,.2);}
+        .wheel ul {list-style: none;}
+        .wheel-light li{position: absolute; z-index: 10; top: 0; bottom: 0; left: 0; right: 0; opacity: .9; -moz-animation: "lightFlicker" 2s linear 0 infinite; -webkit-animation: "lightFlicker" 2s linear 0 infinite; -o-animation: "lightFlicker" 2s linear 0 infinite; -ms-animation: "lightFlicker" 2s linear 0 infinite; animation: "lightFlicker" 2s linear 0 infinite;}
+        .wheel-light li i{position: absolute; display: block; width: 10px; height: 10px; background: #fe0; border-radius: 50%; box-shadow: 0 0 8px 4px #fd0;}
+        .wheel-light li i:nth-child(1){top: 10px; left: 0; right: 0; margin: 0 auto;}
+        .wheel-light li i:nth-child(2){top: 0; bottom: 0; right: 10px; margin: auto 0;}
+        .wheel-light li i:nth-child(3){bottom: 10px; left: 0; right: 0; margin: 0 auto;}
+        .wheel-light li i:nth-child(4){top: 0; bottom: 0; left: 10px; margin: auto 0;}
+        .wheel-light li:nth-child(2){-moz-transform: rotate(15deg); -webkit-transform: rotate(15deg); -o-transform: rotate(15deg); -ms-transform: rotate(15deg); transform: rotate(15deg);}
+        .wheel-light li:nth-child(3){-moz-transform: rotate(30deg); -webkit-transform: rotate(30deg); -o-transform: rotate(30deg); -ms-transform: rotate(30deg); transform: rotate(30deg);}
+        .wheel-light li:nth-child(4){-moz-transform: rotate(45deg); -webkit-transform: rotate(45deg); -o-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg);}
+        .wheel-light li:nth-child(5){-moz-transform: rotate(60deg); -webkit-transform: rotate(60deg); -o-transform: rotate(60deg); -ms-transform: rotate(60deg); transform: rotate(60deg);}
+        .wheel-light li:nth-child(6){-moz-transform: rotate(75deg); -webkit-transform: rotate(75deg); -o-transform: rotate(75deg); -ms-transform: rotate(75deg); transform: rotate(75deg);}
+
+        .wheel-list{ transition: all 3s ease-in-out;position: relative; z-index: 20; display: block; width: 400px; height: 400px; overflow: hidden; background: #fff; border-radius: 50%; box-shadow: 0 0 6px 2px rgba(0,0,0,.4);}
+        .wheel-list:before{position: absolute; top: 0; left: 0; display: block; width: 100%; height: 100%; content: ''; border-radius: 50%; box-shadow: inset 0 0 0 8px rgba(255,255,155,.5); background: rgb(255,255,255); background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 40%, rgba(255,102,0,1) 85%); background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(40%,rgba(255,255,255,1)), color-stop(85%,rgba(255,102,0,1))); background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 40%,rgba(255,102,0,1) 85%); background: -o-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 40%,rgba(255,102,0,1) 85%); background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 40%,rgba(255,102,0,1) 85%); background: radial-gradient(ellipse at center, rgba(255,255,255,1) 40%,rgba(255,102,0,1) 85%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ff6600',GradientType=1 );}
+        .wheel-list li{position: absolute; top: 0; left: 0; width: 400px; height: 200px; -moz-transform-origin: center bottom; -webkit-transform-origin: center bottom; -o-transform-origin: center bottom; -ms-transform-origin: center bottom; transform-origin: center bottom;}
+        .wheel-list li i{position: absolute; top: 0; left: 0; margin-left: -50%; display: block; width: 100%; height: 100%; background: rgba(255,221,0,.3); content: ''; box-shadow: inset -1px 0 0 rgba(255,153,0,.7), inset 0 -1px 0 rgba(255,255,255,.4); -moz-transform-origin: right bottom; -webkit-transform-origin: right bottom; -o-transform-origin: right bottom; -ms-transform-origin: right bottom; transform-origin: right bottom;}
+        .wheel-list .thanks{position: relative; margin: 0 auto; padding-top: 20px; width: 1em; color: #900; font-size: 18px; font-weight: 700; text-shadow: 0 1px 0 rgba(255,255,255,.4);font-weight: normal;}
+        .wheel-list .prize{position: relative; margin: 0 auto; padding-top: 20px; width: 50%; overflow: hidden; text-align: center; line-height: 25px; text-shadow: 0 1px 0 rgba(255,255,255,.5);}
+
+
+        .wheel-light li:nth-child(2n){opacity: .5; -moz-animation-delay: 1s; -webkit-animation-delay: 1s; -o-animation-delay: 1s; -ms-animation-delay: 1s; animation-delay: 1s;}
+        .wheel-pointer{position: absolute; z-index: 30; top: 0; bottom: 0; left: 0; right: 0; margin: auto; width: 140px; height: 140px; border: 1px solid #e60; box-shadow: 0 0 2px 2px rgba(0,0,0,.1); border-radius: 50%;}
+        .activity{position: relative; margin: 50px auto; padding: 0 25px 30px; width: 800px; overflow: hidden; border-bottom: 3px solid #e5e5e5; background: #fff; font: 12px/1.5 "microsoft yahei"; border-radius: 20px; box-shadow: 0 1px 6px 3px rgba(0,0,0,.1);}
+        .wheel-pointer:before{position: absolute; top: -40px; left: 50%; display: block; width: 60px; height: 60px; border: 1px solid #e60; background: #fb0; content: ''; box-shadow: inset 1px 1px 0 rgba(255,255,255,.5); -moz-transform-origin: left top; -webkit-transform-origin: left top; -o-transform-origin: left top; -ms-transform-origin: left top; transform-origin: left top; -moz-transform: rotate(30deg) skewY(30deg); -webkit-transform: rotate(30deg) skewY(30deg); -o-transform: rotate(30deg) skewY(30deg); -ms-transform: rotate(30deg) skewY(30deg); transform: rotate(30deg) skewY(30deg);}
+        .wheel-pointer:after{position: relative; display: block; width: 100%; height: 100%; background: #ffcc00; content: ''; border-radius: 50%; box-shadow: inset 1px 1px 0 rgba(255,255,255,.5); background: -moz-linear-gradient(-45deg, #ffcc00 0%, #ff8800 50%, #ffcc00 100%); background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ffcc00), color-stop(50%,#ff8800), color-stop(100%,#ffcc00)); background: -webkit-linear-gradient(-45deg, #ffcc00 0%,#ff8800 50%,#ffcc00 100%); background: -o-linear-gradient(-45deg, #ffcc00 0%,#ff8800 50%,#ffcc00 100%); background: -ms-linear-gradient(-45deg, #ffcc00 0%,#ff8800 50%,#ffcc00 100%); background: linear-gradient(135deg, #ffcc00 0%,#ff8800 50%,#ffcc00 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffcc00', endColorstr='#ffcc00',GradientType=1 );}
+
+        .wheel-pointer i{position: absolute; z-index: 35; top: -36px; left: 0; right: 0; margin: 0 auto; display: block; width: 60px; height: 60px; overflow: hidden;}
+        .wheel-pointer i:before{display: block; width: 100%; height: 100%; content: ''; -moz-transform-origin: left top; -webkit-transform-origin: left top; -o-transform-origin: left top; -ms-transform-origin: left top; transform-origin: left top; -moz-transform: translateX(50%) rotate(30deg) skewY(30deg); -webkit-transform: translateX(50%) rotate(30deg) skewY(30deg); -o-transform: translateX(50%) rotate(30deg) skewY(30deg); -ms-transform: translateX(50%) rotate(30deg) skewY(30deg); transform: translateX(50%) rotate(30deg) skewY(30deg); background: rgb(255,178,0); background: -moz-linear-gradient(40deg, rgba(255,178,0,1) 0%, rgba(255,179,0,1) 45%, rgba(254,214,86,1) 46%, rgba(255,146,0,1) 90%); background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(255,178,0,1)), color-stop(45%,rgba(255,179,0,1)), color-stop(46%,rgba(254,214,86,1)), color-stop(90%,rgba(255,146,0,1))); background: -webkit-linear-gradient(40deg, rgba(255,178,0,1) 0%,rgba(255,179,0,1) 45%,rgba(254,214,86,1) 46%,rgba(255,146,0,1) 90%); background: -o-linear-gradient(40deg, rgba(255,178,0,1) 0%,rgba(255,179,0,1) 45%,rgba(254,214,86,1) 46%,rgba(255,146,0,1) 90%); background: -ms-linear-gradient(40deg, rgba(255,178,0,1) 0%,rgba(255,179,0,1) 45%,rgba(254,214,86,1) 46%,rgba(255,146,0,1) 90%); background: linear-gradient(50deg, rgba(255,178,0,1) 0%,rgba(255,179,0,1) 45%,rgba(254,214,86,1) 46%,rgba(255,146,0,1) 90%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb200', endColorstr='#ff9200',GradientType=1 );}
+        .wheel-btn{position: absolute; z-index: 40; top: 0; bottom: 0; left: 0; right: 0; margin: auto; padding: 10px; width: 100px; height: 100px;box-shadow: inset 0 1px 1px rgba(255,102,0,.4), inset 0 -1px 1px rgba(255,238,0,.4); background: -moz-linear-gradient(top, rgba(255,85,0,0.7) 0%, rgba(255,221,0,1) 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,85,0,0.7)), color-stop(100%,rgba(255,221,0,1))); background: -webkit-linear-gradient(top, rgba(255,85,0,0.7) 0%,rgba(255,221,0,1) 100%); background: -o-linear-gradient(top, rgba(255,85,0,0.7) 0%,rgba(255,221,0,1) 100%); background: -ms-linear-gradient(top, rgba(255,85,0,0.7) 0%,rgba(255,221,0,1) 100%); background: linear-gradient(to bottom, rgba(255,85,0,0.7) 0%,rgba(255,221,0,1) 100%); border-radius: 60px; }
+        .wheel-btn strong{padding-top: 6px; display: block; color: #fff; font-size: 18px; text-shadow: 2px 0 0 #c30, -2px 0 0 #c30, 0 2px 0 #c30, 0 -2px 0 #c30, 1px 1px 0 #c30, -1px -1px 0 #c30, -1px 1px 0 #c30, -1px -1px 0 #c30, 0 2px 6px #a30;}
+        .wheel-btn a{color: #ff0;position: relative; display: table-cell; vertical-align: middle; width: 100px; height: 100px; overflow: hidden; color: #ff0; font: 700 14px/25px 'microsoft yahei'; font-size: 16px; text-align: center; text-decoration: none; border-radius: 50%; box-shadow: -1px -1px 10px rgba(255,255,255,.5), 1px 1px 3px rgba(0,0,0,.4), inset -1px -2px 0 #a30; text-shadow: 1px 0 0 #c30, -1px 0 0 #c30, 0 1px 0 #c30, 0 -1px 0 #c30, 0 0 3px #fff; background: rgb(204,51,0); background: -moz-linear-gradient(top, rgba(204,51,0,1) 0%, rgba(255,221,0,1) 100%); background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(204,51,0,1)), color-stop(100%,rgba(255,221,0,1))); background: -webkit-linear-gradient(top, rgba(204,51,0,1) 0%,rgba(255,221,0,1) 100%); background: -o-linear-gradient(top, rgba(204,51,0,1) 0%,rgba(255,221,0,1) 100%); background: -ms-linear-gradient(top, rgba(204,51,0,1) 0%,rgba(255,221,0,1) 100%); background: linear-gradient(to bottom, rgba(204,51,0,1) 0%,rgba(255,221,0,1) 100%);}
+        .wheel-btn a:after{position: absolute; bottom: 7px; right: 5px; display: block; width: 90px; height: 90px; content: ''; border-radius: 50%; opacity: .8; background: -moz-linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 30%); background: -webkit-gradient(linear, right bottom, left top, color-stop(0%,rgba(255,255,255,1)), color-stop(30%,rgba(255,255,255,0))); background: -webkit-linear-gradient(135deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 30%); background: -o-linear-gradient(135deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 30%); background: -ms-linear-gradient(135deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 30%); background: linear-gradient(-45deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 30%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccffffff', endColorstr='#00ffffff',GradientType=1 );}
+
     </style>
 </head>
-<body>
+<body id="body" onLoad="init()">
 <div id="nav">
     <ul class="layui-nav">
         <li class="layui-nav-item layui-this"><a href="index.html">首页</a></li>
@@ -42,14 +79,253 @@
     </ul>
 
 </div>
+<div class="wheel">
+    <ul class="wheel-light">
+        <li><i></i><i></i><i></i><i></i></li>
+        <li><i></i><i></i><i></i><i></i></li>
+        <li><i></i><i></i><i></i><i></i></li>
+        <li><i></i><i></i><i></i><i></i></li>
+        <li><i></i><i></i><i></i><i></i></li>
+        <li><i></i><i></i><i></i><i></i></li>
+    </ul>
+    <ul id="wheel" class="wheel-list">
+        <li style="transform: rotate(0deg);">
+            <i style="transform: rotate(30deg) skewY(30deg);"></i>
+            <div class="prize">
+                <h3>一等奖</h3>
+                <p>1000积分</p>
+            </div>
+        </li>
+        <li style="transform: rotate(60deg);">
+
+            <i style="transform: rotate(30deg) skewY(30deg);"></i>
+            <div class="prize">
+                <h3>再接再厉</h3>
+                <p>呜呜 没有中奖 ...</p>
+            </div>
+        </li>
+        <li style="transform: rotate(120deg);">
+
+            <i style="transform: rotate(30deg) skewY(30deg);"></i>
+            <div class="prize">
+                <h3>五等奖</h3>
+                <p>10积分</p>
+            </div>
+        </li>
+        <li style="transform: rotate(180deg);">
+            <i style="transform: rotate(30deg) skewY(30deg);"></i>
+            <div class="prize">
+                <h3>四等奖</h3>
+                <p>50积分</p>
+            </div>
+        </li>
+        <li style="transform: rotate(240deg);">
+            <i style="transform: rotate(30deg) skewY(30deg);"></i>
+            <div class="prize">
+                <h3>三等奖</h3>
+                <p>200积分</p>
+            </div>
+        </li>
+        <li style="transform: rotate(300deg);">
+            <i style="transform: rotate(30deg) skewY(30deg);"></i>
+            <div class="prize">
+                <h3>二等奖</h3>
+                <p>500积分</p>
+            </div>
+        </li>
+    </ul>
+    <div id="pointer" class="wheel-pointer"><i></i></div>
+    <div class="wheel-btn">
+        <a id="button" href="javascript:;">
+            <strong>试试手气!</strong>
+        </a>
+    </div>
+</div>
+<!-- 提示  str-->
+<style media="screen">
+    .secenio{ z-index:5;width: 600px; background: #ffffff; margin: 0 auto; padding: 50px;}
+    .secenio ul li strong{ width: 200px; display: inline-block; padding-left: 5px;}
+    .secenio ul li span{ display: inline-block; width: 20px;}
+    .secenio ul li i {font-style:normal;}
+</style>
+<div class="secenio">
+    <ul>
+        <li>一等奖 :<strong>1000积分 </strong></li>
+        <li>二等奖 :<strong>500积分</strong></li>
+        <li>三等奖 :<strong>200积分</strong></li>
+        <li>四等奖 :<strong>50积分</strong></li>
+        <li>五等奖 :<strong>10积分</strong></li>
+        <li>鼓励奖 :<strong>差点就中奖了! 再接再厉</strong></li>
+        <!--<span></span>总数量:<i>5</i>-->
+    </ul>
+</div>
+<!-- 提示  end-->
+
+<script>
+    var SCREEN_WIDTH = window.innerWidth;//
+    var SCREEN_HEIGHT = window.innerHeight;
+    var container;
+    var particle;//粒子
+
+    var camera;
+    var scene;
+    var renderer;
+
+    var starSnow = 1;
+
+    var particles = [];
+
+    var particleImage = new Image();
+    //THREE.ImageUtils.loadTexture( "img/ParticleSmoke.png" );
+    particleImage.src = 'images/ParticleSmoke.png';
 
 
 
+    function init() {
+        //alert("message3");
+        container = document.createElement('div');//container：画布实例;
+        document.body.appendChild(container);
+
+        camera = new THREE.PerspectiveCamera( 50, SCREEN_WIDTH / SCREEN_HEIGHT, 1, 10000 );
+        camera.position.z = 1000;
+        //camera.position.y = 50;
+
+        scene = new THREE.Scene();
+        scene.add(camera);
+
+        renderer = new THREE.CanvasRenderer();
+        renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+        var material = new THREE.ParticleBasicMaterial( { map: new THREE.Texture(particleImage) } );
+        //alert("message2");
+        for (var i = 0; i < 260; i++) {
+            //alert("message");
+            particle = new Particle3D( material);
+            particle.position.x = Math.random() * 2000-1000;
+
+            particle.position.z = Math.random() * 2000-1000;
+            particle.position.y = Math.random() * 2000-1000;
+            //particle.position.y = Math.random() * (1600-particle.position.z)-1000;
+            particle.scale.x = particle.scale.y = 0.5;
+            scene.add( particle );
+
+            particles.push(particle);
+        }
+
+        container.appendChild( renderer.domElement );
+
+
+        //document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+        document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+        document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+        document.addEventListener( 'touchend', onDocumentTouchEnd, false );
+
+        setInterval( loop, 1000 / 40 );
+
+    }
+
+    var touchStartX;
+    var touchFlag = 0;//储存当前是否滑动的状态;
+    var touchSensitive = 80;//检测滑动的灵敏度;
+    //var touchStartY;
+    //var touchEndX;
+    //var touchEndY;
+    function onDocumentTouchStart( event ) {
+
+        if ( event.touches.length == 1 ) {
+
+            event.preventDefault();//取消默认关联动作;
+            touchStartX = 0;
+            touchStartX = event.touches[ 0 ].pageX ;
+            //touchStartY = event.touches[ 0 ].pageY ;
+        }
+    }
+
+
+    function onDocumentTouchMove( event ) {
+
+        if ( event.touches.length == 1 ) {
+            event.preventDefault();
+            var direction = event.touches[ 0 ].pageX - touchStartX;
+            if (Math.abs(direction) > touchSensitive) {
+                if (direction>0) {touchFlag = 1;}
+                else if (direction<0) {touchFlag = -1;};
+                //changeAndBack(touchFlag);
+            }
+        }
+    }
+
+    function onDocumentTouchEnd (event) {
+        // if ( event.touches.length == 0 ) {
+        // 	event.preventDefault();
+        // 	touchEndX = event.touches[ 0 ].pageX ;
+        // 	touchEndY = event.touches[ 0 ].pageY ;
+
+        // }这里存在问题
+        var direction = event.changedTouches[ 0 ].pageX - touchStartX;
+
+        changeAndBack(touchFlag);
+    }
+
+
+    function changeAndBack (touchFlag) {
+        var speedX = 20*touchFlag;
+        touchFlag = 0;
+        for (var i = 0; i < particles.length; i++) {
+            particles[i].velocity=new THREE.Vector3(speedX,-10,0);
+        }
+        var timeOut = setTimeout(";", 800);
+        clearTimeout(timeOut);
+
+        var clearI = setInterval(function () {
+            if (touchFlag) {
+                clearInterval(clearI);
+                return;
+            };
+            speedX*=0.8;
+
+            if (Math.abs(speedX)<=1.5) {
+                speedX=0;
+                clearInterval(clearI);
+            };
+
+            for (var i = 0; i < particles.length; i++) {
+                particles[i].velocity=new THREE.Vector3(speedX,-10,0);
+            }
+        },100);
+
+
+    }
+
+
+    function loop() {
+        for(var i = 0; i<particles.length; i++){
+            var particle = particles[i];
+            particle.updatePhysics();
+
+            with(particle.position)
+            {
+                if((y<-1000)&&starSnow) {y+=2000;}
+
+                if(x>1000) x-=2000;
+                else if(x<-1000) x+=2000;
+                if(z>1000) z-=2000;
+                else if(z<-1000) z+=2000;
+            }
+        }
+
+        camera.lookAt(scene.position);
+
+        renderer.render( scene, camera );
+    }
+</script>
 </body>
 <script src= "js/jquery-3.3.1.min.js"></script>
 <script src="js/layui.js"></script>
 <script src="js/layer.js"></script>
 <script src="js/main.js"></script>
+<script src="js/sweet-alert.min.js"></script>
+<script src="js/ThreeCanvas.js"></script>
+<script src="js/Snow.js"></script>
 <script>
     layui.use('element', function(){
         var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
@@ -61,5 +337,70 @@
         });
     });
 </script>
+<script>
+    window.onload = function (){
+        /*
+        ** 抽奖概率为 总和 * 10 ; 总概率 360°
+        ** 旋转最少  turn +  度数的圈数 ;
+        **
+        */
+        var PrizeSon =  ["一等奖 : 1000积分 " , " 二等奖 : 500积分" , " 三等奖 : 200积分" , " 四等奖 : 50积分" , " 五等奖 : 10积分" , "  再接再厉 : 很遗憾您没有中奖 !"] ; //奖品提示
+        var totalNum = 6 ; // 转盘 总数
+        var trunNum = [ 1 , 2 , 3 , 4 , 5 , 6 ]; //概率奖品 编号
+        var turntable = [] ; // 随机概率计算
+        var isStatr = false ; //锁 专拍没有执行完的时候 不可以再次点击 ;
+        var lenCloc = 0 ; //当前第几次计算叠加的度数
+        var turn  = 3 ; //转盘旋转最低的圈数
 
+        var brn = document.getElementById("button");
+        var wheel = document.getElementById("wheel");
+
+        /* 循环概率 */
+        for (var i = 0; i < trunNum.length; i++) {
+            for (var j = 0; j < trunNum[i]; j++) {
+                turntable.push(i+1);
+            }
+        }
+
+        /* 点击 开始  */
+        brn.onclick = function(){
+            if(!isStatr){
+                isStatr = true;
+                var random = Math.floor(Math.random()*turntable.length);
+                //console.log(Math.floor(Math.random()*turntable.length)%6);
+                operation(random);
+            }else{
+                return false;
+            }
+        }
+
+        /*    开始 function  ran = 随机    */
+        function operation( ran ) {
+            lenCloc++;
+            var Prize = turntable[ran]-1 , sun = turn*360 ;  //编号  // 度数  //  时间
+            if(Prize>=totalNum){
+                Prize = 0;
+            }
+            var soBuom =parseInt(Math.floor(Math.random()*60) - 30);
+
+            /*    避免多次出现1等奖 所以要删除 下标    */
+            turntable.splice(ran, 1);
+
+            /*    旋转度数 = 上次度数+ 最小圈数 * 360 + 当前数字 * 60 +随机角度  = 最终旋转度数     */
+            wheel.style.transform = "rotate("+((lenCloc*sun+Prize*60)+soBuom)+"deg)";
+            //wheel.style.webkitTransform = "rotate("+((lenCloc*sun+Prize*60)+soBuom)+"deg)";
+
+            setTimeout(function () {
+                if (PrizeSon[Prize] == PrizeSon[5]) {
+                    // alert("呜呜呜没中奖~")
+                    layer.msg("呜呜呜没中奖~");
+                }
+                else {
+                    layer.msg("您获得了" + PrizeSon[Prize]);
+                    isStatr = false;
+                }
+            }, 3200);
+        }
+    }
+</script>
 </html>
