@@ -1,18 +1,26 @@
-var question = "放手工活公检法评价";
+var question = "放手工活公检法评价感受感受谁谁谁谁干坏事感受感受";
 var words = "小水皮大丹丽呵嘿哈";
-var rightword = "小水皮大" ;
+var rightword = "小水皮大丹丽" ;
+$("#question span").text(question);
 //打乱words
 function upsetArr(arr){
     return arr.sort(function(){ return Math.random() - 0.5});
 }
 var newWords = upsetArr(words.split("")).join("");
 //把字符串转成数组打乱后再转成字符串
-$("#question").text(question);
+
 //填入words
 for (var i = 0;i< newWords.length; i++){
     $(".words").children().eq(i).text(newWords[i]);
 }
 
+
+
+console.log(rightword.length)
+for (j = 0;j < rightword.length; j++){
+    $(".cells").append("<div class='cell'></div>")
+    $(".cells").children().eq(j).attr("id", "s"+j)
+}
 
 //下面的字点击事件
 $(".word").click(function () {
