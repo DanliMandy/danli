@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>猜谜语</title>
+    <title>个人中心</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/layui.css" media="all">
     <link rel="stylesheet" href="css/layer.css" media="all">
     <style>
         body{
             background-color: #EEE;
         }
-        .blank{
-            height: 100px;
+        *{
+            margin: 0px;padding: 0px;
         }
     </style>
 </head>
@@ -42,32 +43,30 @@
     </ul>
 
 </div>
-<div id="main">
-    <div class="blank"></div>
-    <div id = top>
-        <div id="question" class="layui-anim" data-anim="layui-anim-scaleSpring"><span></span></div>
+<div class="left">
+     <div id="menu">
+        <dl>
+            <dd id="set"><strong>设置</strong></dd>
+            <dd>
+                <a>个人信息</a>
+            </dd>
+            <dd>
+                <a>我的积分</a>
+            </dd>
+        </dl>
     </div>
-    <div class="cells">
-        <!--<div id="s0" class="cell"></div>
-        <div id="s1" class="cell"></div>
-        <div id="s2" class="cell"></div>
-        <div id="s3" class="cell"></div>-->
-    </div>
-    <div class="words">
-        <div id="w0" class="word"></div>
-        <div id="w1" class="word"></div>
-        <div id="w2" class="word"></div>
-        <div id="w3" class="word"></div>
-        <div id="w4" class="word"></div>
-        <div id="w5" class="word"></div>
-        <div id="w6" class="word"></div>
-        <div id="w7" class="word"></div>
-        <div id="w8" class="word"></div>
-    </div>
-    <div id = "next"><button class="layui-btn layui-btn-normal layui-btn-radius">下一题</button></div>
 </div>
+<div class="main">
+    <div id = "form" class="layui-form-item">
+        <span class="label">用户名： <span id="user">Mandy</span></span><br><br>
+        <span class="label">手机号： <span id="phone">1875154652</span></span><br><br>
+        <span class="label">邮箱： <span id="email">1562255@fsa.com</span></span><br><br>
+        <label>性别：</label>
+        <input type="radio" name="sex" value="男" checked = "">男&nbsp
+        <input type="radio" name="sex" value="女">女
+    </div>
 
-
+</div>
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/layer.js"></script>

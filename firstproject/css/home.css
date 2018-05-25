@@ -1,0 +1,29 @@
+.left{
+    width: 110px;
+    height: 1000px;
+    position: relative;
+    float: left;
+    top: 20px;
+    left: 300px;
+}
+#set{
+    cursor: auto;
+}
+.left dl dd{
+    height: 30px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.main{
+    width: 900px;height: 1000px;
+    position: relative;
+    float: left;
+    left: 300px;top: 20px;
+    background-color: white;
+}
+#form{
+    position: relative;
+    top: 40px;
+    left: 60px;
+    font-size: 15px;
+}
