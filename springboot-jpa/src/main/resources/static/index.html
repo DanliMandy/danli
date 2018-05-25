@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>猜谜语</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layui.css" media="all">
+    <link rel="stylesheet" href="css/layer.css" media="all">
+    <style>
+        body{
+            background-color: #EEE;
+        }
+        .blank{
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="nav">
+    <ul class="layui-nav">
+        <li class="layui-nav-item layui-this"><a href="index.html">首页</a></li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">积分商城</a>
+            <dl class="layui-nav-child">
+                <dd><a href="bigWheel.html">大转盘</a></dd>
+                <dd><a href="">积分兑换</a></dd>
+            </dl>
+        </li>
+
+        <li class="layui-nav-item">
+            <a href="javascript:;">个人中心</a>
+            <dl class="layui-nav-child">
+                <dd class="layui-this"><a href="">个人资料</a></dd>
+                <dd><a href="">修改密码</a></dd>
+            </dl>
+        </li>
+        <div class="LoginandGegister">
+            <button id = "login" class="layui-btn layui-btn-primary layui-btn-radius layui-btn-sm">登录</button>
+            <span>&nbsp;|&nbsp;</span>
+            <button id = "register" class="layui-btn layui-btn-primary layui-btn-radius layui-btn-sm">注册</button>
+        </div>
+    </ul>
+
+</div>
+<div id="main">
+    <div class="blank"></div>
+    <div id = top>
+        <div id="question" class="layui-anim" data-anim="layui-anim-scaleSpring"></div>
+    </div>
+    <div class="cells">
+        <div id="s0" class="cell"></div>
+        <div id="s1" class="cell"></div>
+        <div id="s2" class="cell"></div>
+        <div id="s3" class="cell"></div>
+    </div>
+    <div class="words">
+        <div id="w0" class="word"></div>
+        <div id="w1" class="word"></div>
+        <div id="w2" class="word"></div>
+        <div id="w3" class="word"></div>
+        <div id="w4" class="word"></div>
+        <div id="w5" class="word"></div>
+        <div id="w6" class="word"></div>
+        <div id="w7" class="word"></div>
+        <div id="w8" class="word"></div>
+    </div>
+    <div id = "next"><button class="layui-btn layui-btn-normal layui-btn-radius">下一题</button></div>
+</div>
+
+
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/layer.js"></script>
+<script src="js/layui.js"></script>
+<script>
+    layui.use('element', function(){
+        var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+        //监听导航点击
+        element.on('nav(demo)', function(elem){
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+
+    var question = "放手工活公检法评价阿萨斯的阿萨德";
+    var words = "小水皮大丹丽呵嘿哈";
+    var rightword = "小水皮大" ;
+    $.get("/question/list",function(data){
+        console.log(data);
+          question = data[0].question;
+          words = data[0].words;
+          rightword = data[0].rightword;
+        var newWords = upsetArr(words.split("")).join("");
+          //把字符串转成数组打乱后再转成字符串
+        $("#question").text(question);
+            //填入words
+        for (var i = 0;i< newWords.length; i++){
+            $(".words").children().eq(i).text(newWords[i]);
+        }
+    });
+    console.log(rightword);
+</script>
+<script src="js/main.js"></script>
+</html>
