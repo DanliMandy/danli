@@ -26,12 +26,11 @@
       <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1500">
-              <caret line="72" column="35" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
+            <state relative-caret-position="432">
+              <caret line="63" column="75" selection-start-line="63" selection-start-column="75" selection-end-line="63" selection-end-column="75" />
               <folding>
                 <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#script#3;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -87,8 +86,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="501" />
-    <option name="y" value="223" />
+    <option name="x" value="86" />
+    <option name="y" value="97" />
     <option name="width" value="1348" />
     <option name="height" value="953" />
   </component>
@@ -203,15 +202,15 @@
       <workItem from="1526954129675" duration="5828000" />
       <workItem from="1527055991724" duration="1606000" />
       <workItem from="1527144532463" duration="7040000" />
-      <workItem from="1527211195703" duration="330000" />
+      <workItem from="1527211195703" duration="1829000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45688000" />
+    <option name="totallyTimeSpent" value="47187000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="501" y="223" width="1348" height="953" extended-state="0" />
+    <frame x="86" y="97" width="1348" height="953" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -274,7 +273,6 @@
           <folding>
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#3;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -451,12 +449,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1500">
-          <caret line="72" column="35" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
+        <state relative-caret-position="432">
+          <caret line="63" column="75" selection-start-line="63" selection-start-column="75" selection-end-line="63" selection-end-column="75" />
           <folding>
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#ul#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#script#3;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>
