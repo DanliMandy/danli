@@ -10,9 +10,23 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/layui.css" media="all">
     <link rel="stylesheet" href="css/layer.css" media="all">
+    <style>
+        *{
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-<div class="points">我的积分是20000</div>
+<div class="points">
+    <form class="layui-form" action="" lay-filter="example">
+        <div class="layui-form-item">
+            <label class="layui-form-label">我的积分:</label>
+            <div class="layui-input-inline">
+                <input style="border:0;" readonly name="title" lay-verify="title" autocomplete="off" value="20000" class="layui-input">
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/layer.js"></script>
