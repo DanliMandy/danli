@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        body{
+            background-color: #EEE;
+        }
+        #app{
+            width: 1500px;
+            margin: auto;
+        }
+        .caption{
+            width: 150px;height: 45px;
+            position: relative;
+            left: 10px;
+            font-size: 30px;
+            font-family: "Hiragino Sans GB";
+            letter-spacing: 8px;
+
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <div class="caption">购物车</div>
+    <template align="center">
+        <el-table :data="products" style="width: 80%" >
+            <el-table-column align="center" type="selection" label= "全选" width="60"></el-table-column>
+            <el-table-column label=""  width="100" align="center">
+                <template slot-scope="scope">
+                    <img  :src="scope.row.productCover" alt=""/>
+                </template>
+            </el-table-column>
+            <el-table-column prop="productName" label="商品"  width="200"></el-table-column>
+            <el-table-column prop="productInfo" label="属性" width="350"></el-table-column>
+            <el-table-column prop="productPrice" label="单价" width="80" align="center"></el-table-column>
+            <el-table-column label="数量" width="180" align="center">
+                <template slot-scope="scope">
+                <el-input-number size="mini" :min="1" v-model="scope.row.productCount" @click = "multiply()"></el-input-number>
+                </template>
+            </el-table-column>
+            <el-table-column prop="productTotal" label="小计" width="100">
+
+            </el-table-column>
+            <el-table-column prop="delete" label="操作" width="100" align="center">
+                <template slot-scope="scope">
+                    <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                </template>
+            </el-table-column>
+        </el-table>
+    </template>
+</div>
+</body>
+<script src="vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    let vm = new Vue({
+        el: '#app',
+        created(){
+            axios.get('./cart.json').then(res => {
+                    this.products = res.data;
+                },err =>{
+                    console.log(err);
+                });
+        },
+        data: {
+            products: []
+        },
+        methods: {
+            /*handleDelete(index, row) {
+                console.log(index, row);
+            }*/
+            multiply(){
+                alert(this.productCount);
+            }
+        }
+    })
+</script>
+</html>
