@@ -13,6 +13,7 @@ import java.util.Map;
  * 这里省略了service层，实际开发加上；
  */
 @RestController
+@CrossOrigin
 @RequestMapping("question")
 public class QuestionController {
 
@@ -20,17 +21,17 @@ public class QuestionController {
     QuestionDao questionDao;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public List<Question> getAccounts() {
+    public List<Question> getQuestion() {
         return questionDao.findAll();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Question getAccountById(@PathVariable("id") int id) {
+    public Question getQuestionById(@PathVariable("id") int id) {
         return questionDao.findOne(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public String updateAccount(@PathVariable("id") int id, @RequestParam(value = "name", required = true) String name,
+    public String updateQuestion(@PathVariable("id") int id, @RequestParam(value = "name", required = true) String name,
                                 @RequestParam(value = "money", required = true) double money) {
         Question Question = new Question();
 
@@ -39,11 +40,11 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public String postAccount(@RequestParam(value = "name") String name,
+    public String postQuestion(@RequestParam(value = "name") String name,
                               @RequestParam(value = "money") double money) {
         Question Question = new Question();
-        Question account1 = questionDao.save(Question);
-        return account1.toString();
+        Question Question1 = questionDao.save(Question);
+        return Question1.toString();
 
     }
 
