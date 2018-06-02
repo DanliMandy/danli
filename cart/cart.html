@@ -5,15 +5,18 @@
     <title>购物车</title>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <style>
-        body{
+        body {
             background-color: #EEE;
         }
-        #app{
+
+        #app {
             width: 1487px;
             margin: auto;
         }
-        .caption{
-            width: 150px;height: 45px;
+
+        .caption {
+            width: 150px;
+            height: 45px;
             position: relative;
             left: 10px;
             font-size: 30px;
@@ -21,8 +24,10 @@
             letter-spacing: 8px;
 
         }
-        .sum{
-            width: 1187px;height: 50px;
+
+        .sum {
+            width: 1187px;
+            height: 50px;
             position: relative;
             top: 15px;
             border: solid #666 1px;
@@ -37,16 +42,13 @@
     <template align="center">
         <el-table :data="products" style="width: 80%" @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="60">
-               <!-- <template slot-scope="scope">
-                    <el-checkbox v-model="scope.row.isSelected"></el-checkbox>
-                </template>-->
             </el-table-column>
-            <el-table-column label=""  width="100" align="center">
+            <el-table-column label="" width="100" align="center">
                 <template slot-scope="scope">
-                    <img  :src="scope.row.productCover" alt=""/>
+                    <img :src="scope.row.productCover" alt=""/>
                 </template>
             </el-table-column>
-            <el-table-column prop="productName" label="商品"  width="200"></el-table-column>
+            <el-table-column prop="productName" label="商品" width="200"></el-table-column>
             <el-table-column prop="productInfo" label="属性" width="350"></el-table-column>
             <el-table-column label="单价" width="100" align="center">
                 <template slot-scope="scope">
@@ -55,7 +57,7 @@
             </el-table-column>
             <el-table-column label="数量" width="160" align="center">
                 <template slot-scope="scope">
-                <el-input-number size="mini" :min="1" v-model="scope.row.productCount"></el-input-number>
+                    <el-input-number size="mini" :min="1" v-model="scope.row.productCount"></el-input-number>
                 </template>
             </el-table-column>
             <el-table-column label="小计" width="120" align="center">
@@ -72,7 +74,7 @@
         </el-table>
     </template>
 
-    <div class="sum">总计：{{sum()}}</div>
+    <div class="sum">总计：{{total}}</div>
 
 </div>
 </body>
@@ -82,39 +84,30 @@
 <script>
     let vm = new Vue({
         el: '#app',
-        created(){
+        created() {
             axios.get('./cart.json').then(res => {
-                    this.products = res.data;
-                },err =>{
-                    console.log(err);
-                });
+                this.products = res.data;
+            }, err => {
+                console.log(err);
+            });
         },
         data: {
             products: [],
-            multipleSelection:[]
+            multipleSelection: [],
+            total: 0,
         },
         methods: {
             deleteRow(row) {
                 // rows.splice(index, 1);
                 this.products = this.products.filter(
                     function (item) {
-                       return item !== row
+                        return item !== row
                     })
             },
-            sum(){
-                 var that = this;
-                return that.products.reduce((total,item) => {
-                    return total+item.productPrice *item.productCount;
-                },0)
-            },
             handleSelectionChange(val) {
-                this.multipleSelection = val;
-                if (this.multipleSelection.length == this.products.length){
-                    this.$options.methods.sum()
-                }
-                else {
-                    console.log("hehe")
-                }
+                this.total = val.reduce((total, item) => {
+                    return total + item.productPrice * item.productCount;
+                }, 0)
             }
 
         }
