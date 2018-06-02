@@ -1,0 +1,19 @@
+// sublime通过 “Sublime-snippet” 实现快速补全代码
+// 首页
+// https://weixin.lawyer-says.com/user/getinfobyuserid?lawyerid=1
+// https://weixin.lawyer-says.com/article/getarticles?lawyerid=1&limit=6
+// 简介
+// https://weixin.lawyer-says.com/user/getpersonalinfo?lawyerid=1
+// 联系我
+// https://weixin.lawyer-says.com/user/getvisitinfo?lawyerid=1
+// 文章
+// https://weixin.lawyer-says.com/article/getarticles?lawyerid=1&limit=6
+// 海南房产律师
+// 田娜，籍贯江西鄱阳人，现执业地海南省三亚市，曾任中国人民财产保险股份有限公司鄱阳支公司、
+// 鄱阳县供电局、鄱阳县工业园区等多家企业法律顾问，在为企业提供法律服务的过程中，充分了解了企业对外处理法律事务的工作流程，
+// 基于此，所谓知己知彼，百战不殆。现任北京凯莱物业管理有限公司三亚分公司，北京凯莱物业管理有限公司陵水分公司法律顾问。
+// 本人主要擅长房地产纠纷、企业法律顾问以及刑事辩护。本人对待当事人真诚、热情、负责，在业务中会尽职尽责维护当事人的合法权利，
+// 促成当事人利益的最大化。本人坚信，没有做不好的事，只有不努力的人。坚持委托人利益至上、优质诚信服务！
+// 海南三亚
+// 海南省三亚市新风街创业大厦A座703
+// 海南追根律师事务所
