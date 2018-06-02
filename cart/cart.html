@@ -9,7 +9,7 @@
             background-color: #EEE;
         }
         #app{
-            width: 1500px;
+            width: 1487px;
             margin: auto;
         }
         .caption{
@@ -21,16 +21,26 @@
             letter-spacing: 8px;
 
         }
-
+        .sum{
+            width: 1187px;height: 50px;
+            position: relative;
+            top: 15px;
+            border: solid #666 1px;
+            text-align: right;
+            line-height: 50px;
+        }
     </style>
 </head>
 <body>
-
 <div id="app">
     <div class="caption">购物车</div>
     <template align="center">
-        <el-table :data="products" style="width: 80%" >
-            <el-table-column align="center" type="selection" label= "全选" width="60"></el-table-column>
+        <el-table :data="products" style="width: 80%">
+            <el-table-column type="selection" width="60">
+               <!-- <template slot-scope="scope">
+                    <el-checkbox v-model="scope.row.isSelected"></el-checkbox>
+                </template>-->
+            </el-table-column>
             <el-table-column label=""  width="100" align="center">
                 <template slot-scope="scope">
                     <img  :src="scope.row.productCover" alt=""/>
@@ -38,22 +48,32 @@
             </el-table-column>
             <el-table-column prop="productName" label="商品"  width="200"></el-table-column>
             <el-table-column prop="productInfo" label="属性" width="350"></el-table-column>
-            <el-table-column prop="productPrice" label="单价" width="80" align="center"></el-table-column>
-            <el-table-column label="数量" width="180" align="center">
+            <el-table-column label="单价" width="100" align="center">
                 <template slot-scope="scope">
-                <el-input-number size="mini" :min="1" v-model="scope.row.productCount" @click = "multiply()"></el-input-number>
+                    ￥{{(scope.row.productPrice).toFixed(2)}}
                 </template>
             </el-table-column>
-            <el-table-column prop="productTotal" label="小计" width="100">
-
+            <el-table-column label="数量" width="160" align="center">
+                <template slot-scope="scope">
+                <el-input-number size="mini" :min="1" v-model="scope.row.productCount"></el-input-number>
+                </template>
+            </el-table-column>
+            <el-table-column label="小计" width="120" align="center">
+                <template slot-scope="scope">
+                    {{(scope.row.productCount*scope.row.productPrice).toFixed(2)}}
+                </template>
             </el-table-column>
             <el-table-column prop="delete" label="操作" width="100" align="center">
                 <template slot-scope="scope">
-                    <el-button size="mini" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                    <el-button size="mini" type="danger" @click="deleteRow(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
+
         </el-table>
     </template>
+
+    <div class="sum">总计：{{sum()}}</div>
+
 </div>
 </body>
 <script src="vue.js"></script>
@@ -70,15 +90,23 @@
                 });
         },
         data: {
-            products: []
+            products: [],
+            checked: true
         },
         methods: {
-            /*handleDelete(index, row) {
-                console.log(index, row);
-            }*/
-            multiply(){
-                alert(this.productCount);
-            }
+            deleteRow(row) {
+                // rows.splice(index, 1);
+                this.products = this.products.filter(
+                    function (item) {
+                       return item !== row
+                    })
+            },
+            sum(){
+                return this.products.reduce((total,item) => {
+                    return total+item.productPrice *item.productCount;
+                },0)
+            },
+
         }
     })
 </script>

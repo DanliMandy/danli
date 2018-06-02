@@ -2,10 +2,17 @@
   {
     "isSelected": true,
     "productCover": "http://img10.360buyimg.com/cms/s80x80_jfs/t17695/189/1800063307/223266/7f72f23e/5ad8525fN051e96d5.jpg",
-    "productName": "荣耀MagicBook笔记本",
+    "productName": "荣耀MagicBook 14英寸轻薄窄边框笔记本电脑",
     "productInfo": "颜色：(冰河银) i7 8+256G MX150满血版",
-    "productPrice": 5699,
-    "productCount": 1,
-    "productTotal": 0
+    "productPrice": 5699.00,
+    "productCount": 1
+  },
+  {
+    "isSelected": true,
+    "productCover": "https://img10.360buyimg.com/cms/s80x80_jfs/t5602/59/8528929637/159111/86b2d828/597b07ddNa8ef938f.jpg",
+    "productName": "西部数据(WD)蓝盘 1TB SATA6Gb/s 7200转64M 台式机硬盘(WD10EZEX)",
+    "productInfo": "颜色：蓝盘--日常家用经典之作",
+    "productPrice": 249.80,
+    "productCount": 2
   }
 ]
