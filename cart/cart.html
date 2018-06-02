@@ -35,7 +35,7 @@
 <div id="app">
     <div class="caption">购物车</div>
     <template align="center">
-        <el-table :data="products" style="width: 80%">
+        <el-table :data="products" style="width: 80%" @selection-change="handleSelectionChange">
             <el-table-column type="selection" width="60">
                <!-- <template slot-scope="scope">
                     <el-checkbox v-model="scope.row.isSelected"></el-checkbox>
@@ -91,7 +91,7 @@
         },
         data: {
             products: [],
-            checked: true
+            multipleSelection:[]
         },
         methods: {
             deleteRow(row) {
@@ -102,10 +102,20 @@
                     })
             },
             sum(){
-                return this.products.reduce((total,item) => {
+                 var that = this;
+                return that.products.reduce((total,item) => {
                     return total+item.productPrice *item.productCount;
                 },0)
             },
+            handleSelectionChange(val) {
+                this.multipleSelection = val;
+                if (this.multipleSelection.length == this.products.length){
+                    this.$options.methods.sum()
+                }
+                else {
+                    console.log("hehe")
+                }
+            }
 
         }
     })
