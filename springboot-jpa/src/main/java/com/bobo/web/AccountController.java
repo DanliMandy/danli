@@ -1,12 +1,7 @@
 package com.bobo.web;
 
-import com.bobo.entity.Account;
-import com.bobo.dao.AccountDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by fangzhipeng on 2017/4/20.
@@ -17,15 +12,14 @@ import java.util.Map;
 @CrossOrigin
 public class AccountController {
 
-    @Autowired
-    AccountDao accountDao;
 
-    @RequestMapping(value = "/login")
-    public List<Account> login() {
-        return accountDao.findAll();
+
+    public static void main(String[] args) {
+        String a= "123";
+        String b= "123";
+        String c= "123";
+        String d= "123";
+        System.out.println(123);
     }
-
-
-
 
 }

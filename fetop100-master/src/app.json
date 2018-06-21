@@ -1,0 +1,8 @@
+{
+  "pages": ["page/index/index"],
+  "window": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "文双工作室",
+    "navigationBarTextStyle": "black"
+  }
+}

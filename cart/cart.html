@@ -57,7 +57,7 @@
             </el-table-column>
             <el-table-column label="数量" width="160" align="center">
                 <template slot-scope="scope">
-                    <el-input-number size="mini" :min="1" v-model="scope.row.productCount"></el-input-number>
+                    <el-input-number size="mini" :min="1" v-model="scope.row.productCount" @change="handleSelectionChange(false)"></el-input-number>
                 </template>
             </el-table-column>
             <el-table-column label="小计" width="120" align="center">
@@ -93,7 +93,7 @@
         },
         data: {
             products: [],
-            multipleSelection: [],
+            MultipleSelection: [],
             total: 0,
         },
         methods: {
@@ -105,9 +105,14 @@
                     })
             },
             handleSelectionChange(val) {
-                this.total = val.reduce((total, item) => {
+                if(!val){
+                    console.log(123);
+                }else{
+                    this.multipleSelection = val;
+                }
+                this.total = this.multipleSelection.reduce((total, item) => {
                     return total + item.productPrice * item.productCount;
-                }, 0)
+                }, 0).toFixed(2);
             }
 
         }

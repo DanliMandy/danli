@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/layui.css" media="all">
+    <link rel="stylesheet" href="css/layer.css" media="all">
+    <style>
+        body{
+            background-color: #EEE;
+        }
+        *{
+            margin: 0px;padding: 0px;
+        }
+        #info iframe{
+            width: 900px;height: 1000px;
+        }
+    </style>
+</head>
+<body>
+<div id="nav">
+    <ul class="layui-nav">
+        <li class="layui-nav-item layui-this"><a href="index.html">首页</a></li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">积分商城</a>
+            <dl class="layui-nav-child">
+                <dd><a href="bigWheel.html">大转盘</a></dd>
+                <dd><a href="">积分兑换</a></dd>
+            </dl>
+        </li>
+
+        <li class="layui-nav-item" lay-unselect="">
+            <a href="home.html"><img src="images/moren.jpg" class="layui-nav-img">个人中心</a>
+        </li>
+
+        <div class="LoginandGegister">
+            <button id = "login" class="layui-btn layui-btn-primary layui-btn-radius layui-btn-sm">登录</button>
+            <span>&nbsp;|&nbsp;</span>
+            <button id = "register" class="layui-btn layui-btn-primary layui-btn-radius layui-btn-sm">注册</button>
+        </div>
+    </ul>
+
+</div>
+<div class="left">
+     <div id="menu">
+        <dl>
+            <dd id="set"><strong>设置</strong></dd>
+            <dd>
+                <a href="main.html" target="iframeContent">个人信息</a>
+            </dd>
+            <dd>
+                <a href="info.html" target="iframeContent">我的积分</a>
+            </dd>
+        </dl>
+    </div>
+</div>
+<div class="main">
+    <div id="info">
+        <iframe id="iframeContent" name="iframeContent" frameborder="0" src="main.html"></iframe>
+    </div>
+</div>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/layer.js"></script>
+<script src="js/layui.js"></script>
+<script>
+    layui.use(['element','form'], function(){
+        var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+        //监听导航点击
+        element.on('nav(demo)', function(elem){
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+</script>
+<script src="js/main.js"></script>
+</html>
